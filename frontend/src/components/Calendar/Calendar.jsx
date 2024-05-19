@@ -5,14 +5,12 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import { INITIAL_EVENTS, createEventId } from "../../event-utils";
-// import { SimpleModal } from "../Modals/SimpleModal";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import axios from "axios";
 // import { CEventForm } from "./CEventForm";
 
 export const Calendar = ({user}) => {
-  // let [showForm, setShowForm] = useState(false);
 
   const [currentEvents, setCurrentEvents] = useState([]);
 
@@ -40,7 +38,7 @@ export const Calendar = ({user}) => {
       });
       // Log the new event to debug the issue
       console.log('New Event:', newEvent,user.id,user);
-      let response=await axios.post('http://localhost:5000/meetings', newEvent)
+      let response=await axios.post('https://evallo-assessment-1.onrender.com/meetings', newEvent)
       response=response.then((res)=>res.json())
       console.log(response);
       // setCurrentEvents((prevEvents) => [...prevEvents, response.data]);
