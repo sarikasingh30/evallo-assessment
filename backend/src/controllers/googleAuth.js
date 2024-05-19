@@ -43,10 +43,16 @@ router.get('/success', async (req, res) => {
 router.get('/error', (req, res) => res.send('Error logging in via Google..'));
 
 router.get('/signout', (req, res) => {
-  req.logout();
-  req.session.destroy(function (err) {
-    console.log('session destroyed.');
-    res.redirect('http://localhost:3000')
+  req.logout((err) => {
+    if (err) {
+      return next(err);
+    }
+    req.session.destroy((err) => {
+      if (err) {
+        return next(err);
+      }
+      res.redirect('http://localhost:3000');
+    });
   });
 });
 

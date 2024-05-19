@@ -1,3 +1,4 @@
+import { Button, Card } from 'flowbite-react';
 import React from 'react';
 
 const Login = () => {
@@ -6,11 +7,29 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <h1>Login with Google</h1>
-      <button onClick={handleLogin}>Sign in with Google</button>
+    <div className='w-3/4 m-auto justifu-centeritems-center mt-[15%]'>
+
+    <Card className="max-w-sm m-auto flex flex-col justify-center items-center">
+      <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+       Login With Google
+      </h5>
+     
+      <Button className='bg-[#dbbdbd] text-black font-bold p-3 text-2xl' onClick={handleLogin}>
+        Sign In
+        <svg className="-mr-1 ml-2 h-4 w-4" fill="blue" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <path
+            fillRule="evenodd"
+            d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+            clipRule="evenodd"
+          />
+        </svg>
+      </Button>
+    </Card>
     </div>
   );
-};
+}
+
+
+
 
 export default Login;

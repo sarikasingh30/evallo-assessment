@@ -1,35 +1,29 @@
 const mongoose=require("mongoose")
+const { Schema } = mongoose
 
-const eventSchema = new mongoose.Schema({
+const meetingSchema = new mongoose.Schema({
+    id:{
+    },
     title: {
       type: String,
-      required: true,
+      required: true
     },
-    description: {
-      type: String,
+    start: {
+      type: String
     },
-    participants: [{
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'User', // Reference to User model if applicable
-    }],
-    date: {
-      type: Date,
-      required: true,
+    end:{
+      type:String
     },
-    time: {
-      type: String, // Can be HH:MM format 
-      required: true,
+    allDay:{
+      type:Boolean
     },
-    duration: {
-      type: Number,
-      required: true,
-    },
-    sessionNotes: {
-      type: String,
-    },
-    googleCalendarEventId: { // Optional for synced events
-      type: String,
-    },
+    userId: { type: Schema.Types.ObjectId, ref: 'User', required: true}
+  },{
+    timestamps: true,
   });
   
-  module.exports = mongoose.model('Event', eventSchema);
+  const Meeting = mongoose.model('Meeting', meetingSchema);
+
+  module.exports = Meeting
+  
+  
