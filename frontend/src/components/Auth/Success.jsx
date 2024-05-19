@@ -10,7 +10,7 @@ export const Success = () => {
     const fetchUser = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:5000/auth/google/success",
+          "https://evallo-assessment.onrender.com/auth/google/success",
           { withCredentials: true }
         );
         setUser(res.data.user);
@@ -40,7 +40,7 @@ export const Success = () => {
             <h1>Welcome, {user.displayName}</h1>
             <div className="flex flex-row justify-end items-center">
             <div className="w-2/5 h-2/5 rounded-xl"><img className="w-full h-full p-4" src={user.photos[0].value} alt={user.displayName} /></div>
-            <Link to="http://localhost:5000/auth/google/signout">
+            <Link to="https://evallo-assessment.onrender.com/auth/google/signout">
               <button>Sign Out</button>
             </Link>
             </div>
