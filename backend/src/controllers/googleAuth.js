@@ -6,12 +6,13 @@ const router = express.Router();
 require('dotenv').config();
 
 let userProfile;
+let REDIRECT_URI="http://localhost:5000/auth/google/callback"||"https://evallo-assessment.onrender.com/"
 passport.use(
   new GoogleStrategy(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_SECRET_KEY,
-      callbackURL: process.env.REDIRECT_URI,
+      callbackURL: REDIRECT_URI,
     },
     function (accessToken, refreshToken, profile, done) {
       userProfile = profile;
@@ -22,7 +23,7 @@ passport.use(
 
 
 router.get('/',(req,res)=>{
-  const authURL=`https://accounts.google.com/o/oauth2/auth?client_id=${process.env.GOOGLE_CLIENT_ID}&redirect_uri=${process.env.REDIRECT_URI}&response_type=code&scope=email%20profile`
+  const authURL=`https://accounts.google.com/o/oauth2/auth?client_id=${process.env.GOOGLE_CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=code&scope=email%20profile`
   res.redirect(authURL)
 })
 

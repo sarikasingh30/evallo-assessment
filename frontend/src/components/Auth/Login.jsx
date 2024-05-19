@@ -3,7 +3,7 @@ import React from 'react';
 
 const Login = () => {
   const handleLogin = () => {
-    window.location.href = 'https://evallo-assessment.onrender.com/auth/google';
+    window.location.href = 'http://localhost:5000/auth/google';
   };
 
   return (
