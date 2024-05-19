@@ -38,7 +38,7 @@ export const Calendar = ({user}) => {
       });
       // Log the new event to debug the issue
       console.log('New Event:', newEvent,user.id,user);
-      let response=await axios.post('https://evallo-assessment-1.onrender.com/meetings', newEvent)
+      let response=await axios.post('https://evallo-assessment.onrender.com/meetings', newEvent)
       response=response.then((res)=>res.json())
       console.log(response);
       // setCurrentEvents((prevEvents) => [...prevEvents, response.data]);
