@@ -10,10 +10,10 @@ const Login = () => {
   useEffect(() => {
     const fetchConfig = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/auth/google/api/config');
+        const response = await axios.get('https://evallo-assessment.onrender.com/auth/google/api/config');
         
         setGoogleClientId(response.data.googleClientId);
-        
+        console.log(googleClientId)
       } catch (error) {
         console.error('Error fetching config:', error);
       }

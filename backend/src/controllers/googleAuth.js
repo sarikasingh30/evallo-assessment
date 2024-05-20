@@ -20,7 +20,7 @@ passport.use(
   )
 );
 router.get('/api/config', (req, res) => {
-  res.json({
+  res.status(200).send({
     googleClientId: process.env.GOOGLE_CLIENT_ID,
     redirectUri: process.env.REDIRECT_URI,
   });
