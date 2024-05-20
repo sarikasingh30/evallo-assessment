@@ -44,12 +44,7 @@ passport.deserializeUser(function (obj, cb) {
   cb(null, obj);
 });
 
-app.get('/api/config', (req, res) => {
-  res.json({
-    googleClientId: process.env.GOOGLE_CLIENT_ID,
-    redirectUri: process.env.REDIRECT_URI,
-  });
-});
+
 
 app.use("/auth/google", authRouter);
 

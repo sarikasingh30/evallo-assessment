@@ -10,7 +10,7 @@ const Login = () => {
   useEffect(() => {
     const fetchConfig = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/config');
+        const response = await axios.get('http://localhost:5000/auth/google/api/config');
         
         setGoogleClientId(response.data.googleClientId);
         

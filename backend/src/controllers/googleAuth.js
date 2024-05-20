@@ -19,7 +19,12 @@ passport.use(
     }
   )
 );
-
+router.get('/api/config', (req, res) => {
+  res.json({
+    googleClientId: process.env.GOOGLE_CLIENT_ID,
+    redirectUri: process.env.REDIRECT_URI,
+  });
+});
 
 // router.get('/',(req,res)=>{
 //   const authURL=`https://accounts.google.com/o/oauth2/auth?client_id=${process.env.GOOGLE_CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=code&scope=email%20profile`
