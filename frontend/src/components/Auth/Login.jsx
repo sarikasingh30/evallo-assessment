@@ -1,10 +1,30 @@
+import axios from 'axios';
 import { Button, Card } from 'flowbite-react';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
-  const handleLogin = () => {
-    window.location.href = 'https://evallo-assessment.onrender.com/auth/google';
-  };
+  const [googleClientId, setGoogleClientId] = useState('');
+  const [redirectUri, setRedirectUri] = useState(process.env.REACT_APP_BACKEND_URL);
+
+  useEffect(() => {
+    const fetchConfig = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/api/config');
+        
+        setGoogleClientId(response.data.googleClientId);
+        
+      } catch (error) {
+        console.error('Error fetching config:', error);
+      }
+    };
+
+    fetchConfig();
+  }, [redirectUri]);
+
+  const googleOAuthUrl=`https://accounts.google.com/o/oauth2/auth?client_id=${googleClientId}&redirect_uri=${redirectUri}&response_type=code&scope=email%20profile`
+  console.log(redirectUri)
+
 
   return (
     <div className='w-3/4 m-auto justifu-centeritems-center mt-[15%]'>
@@ -14,8 +34,8 @@ const Login = () => {
        Login With Google
       </h5>
      
-      <Button className='bg-[#dbbdbd] text-black font-bold p-3 text-2xl' onClick={handleLogin}>
-        Sign In
+      <Link to={googleOAuthUrl}><Button className='bg-[#dbbdbd] text-black font-bold p-3 text-2xl'>
+        Login
         <svg className="-mr-1 ml-2 h-4 w-4" fill="blue" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
           <path
             fillRule="evenodd"
@@ -24,6 +44,7 @@ const Login = () => {
           />
         </svg>
       </Button>
+      </Link>
     </Card>
     </div>
   );

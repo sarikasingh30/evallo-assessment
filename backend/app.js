@@ -44,9 +44,12 @@ passport.deserializeUser(function (obj, cb) {
   cb(null, obj);
 });
 
-// app.get('/', (req, res) => {
-//   res.render('auth');
-// });
+app.get('/api/config', (req, res) => {
+  res.json({
+    googleClientId: process.env.GOOGLE_CLIENT_ID,
+    redirectUri: process.env.REDIRECT_URI,
+  });
+});
 
 app.use("/auth/google", authRouter);
 
@@ -67,7 +70,7 @@ app.post("/meetings", async (req, res) => {
       userId: userId
     });
 
-    const savedMeeting = await newMeeting.save();
+    await newMeeting.save();
     res.status(201).send("Scheduled");
   } catch (error) {
     res.status(500).json({ error: 'Failed to create meeting' });

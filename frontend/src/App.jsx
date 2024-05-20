@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Login from './components/Auth/Login';
-// import OAuthCallback from './components/OAuthCallback';
+
 import {Success} from './components/Auth/Success';
 
 
 const App = () => {
-
+  const [linkD,setData]=useState("")
   return (
     <Router>
       <Routes>
